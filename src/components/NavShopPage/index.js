@@ -1,4 +1,4 @@
-import { rootContainerForShop } from "../../shop/shop.js";
+import { rootContainerForShop } from "../../../shop.js";
 import { RenderShopPage } from "../RenderShopPage/index.js";
 import { CartShopPage } from "../CartShopPage/index.js";
 import { updateCartCount } from "../../helpers/index.js";

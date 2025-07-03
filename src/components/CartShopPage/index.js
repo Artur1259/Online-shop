@@ -1,4 +1,4 @@
-import { rootContainerForShop } from "../../shop/shop.js";
+import { rootContainerForShop } from "../../../shop.js";
 import { NavShopPage } from "../NavShopPage/index.js";
 
 // export function CartShopPage() {
