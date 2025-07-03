@@ -78,7 +78,7 @@ export async function NavShopPage() {
   logo.className = "text-2xl text-white font-bold cursor-pointer";
 
   logoWrapper.onclick = () => {
-    window.location.href = "/store.html";
+    window.location.href = "store.html";
   };
 
   const menu = document.createElement("div");
@@ -264,8 +264,8 @@ export async function NavShopPage() {
         "fas fa-user text-xl text-white cursor-pointer hover:scale-110 duration-300";
 
       userIcon.onclick = () => {
-        window.location.href = "/user.html";
-        window.history.replaceState({}, "", "/store.html");
+        window.location.href = "user.html";
+        window.history.replaceState({}, "", "store.html");
       };
 
       userContainer.appendChild(userIcon);

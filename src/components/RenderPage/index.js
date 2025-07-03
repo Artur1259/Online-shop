@@ -95,7 +95,7 @@ export function renderProducts(products) {
   shopButton.className =
     "py-2 px-5 mt-1 font-semibold bg-red-500 rounded cursor-pointer hover:bg-black hover:text-white";
   shopButton.onclick = () => {
-    window.location.href = "/store.html";
+    window.location.href = "store.html";
   };
 
   shopButtonWrapper.appendChild(shopButton);
