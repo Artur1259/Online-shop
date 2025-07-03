@@ -1,6 +1,6 @@
+import { rootContainerForUsers } from "../../../user.js";
 import { auth } from "../../helpers/auth.js";
 import { loginUser } from "../../helpers/index.js";
-import { rootContainerForUsers } from "../../user.js";
 
 export function UserPage() {
   const userPageWrapper = document.createElement("div");
