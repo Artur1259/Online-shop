@@ -4,7 +4,6 @@ import { NavShopPage } from "../NavShopPage/index.js";
 import { RenderShopPage } from "../RenderShopPage/index.js";
 
 export async function UserInfoPage(userData) {
-    console.log(userData)
   const wrapper = document.createElement("div");
   wrapper.className = "max-w-[1280px] m-auto ";
 

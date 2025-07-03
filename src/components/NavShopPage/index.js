@@ -78,7 +78,7 @@ export async function NavShopPage() {
   logo.className = "text-2xl text-white font-bold cursor-pointer";
 
   logoWrapper.onclick = () => {
-    window.location.href = "/src/shop/store.html";
+    window.location.href = "/store.html";
   };
 
   const menu = document.createElement("div");
@@ -264,8 +264,8 @@ export async function NavShopPage() {
         "fas fa-user text-xl text-white cursor-pointer hover:scale-110 duration-300";
 
       userIcon.onclick = () => {
-        window.location.href = "/src/user.html";
-        window.history.replaceState({}, "", "/src/shop/store.html");
+        window.location.href = "/user.html";
+        window.history.replaceState({}, "", "/store.html");
       };
 
       userContainer.appendChild(userIcon);
@@ -291,24 +291,3 @@ export async function NavShopPage() {
   rootContainerForShop.appendChild(nav);
   updateCartCount();
 }
-// try {
-//   const userData = await getUser();
-
-//   userIcon.className =
-//     "w-8 h-8 rounded-full object-cover cursor-pointer hover:scale-110 duration-300 border-2 border-white";
-//   userIcon.src = userData.image;
-//   userIcon.alt = `${userData.firstName} ${userData.lastName}`;
-
-//   userIcon.onclick = async () => {
-//     rootContainerForShop.innerHTML = "";
-//     await NavShopPage();
-//     UserInfoPage(userData);
-//   };
-//   const userName = document.createElement("span");
-//   userName.className =
-//     "hidden group-hover:block absolute top-full right-0 mt-1 bg-black/80 text-white text-sm px-2 py-1 rounded z-10 user-name";
-//   userName.innerText = `${userData.firstName} ${userData.lastName}`;
-//   userContainer.appendChild(userName);
-// } catch (error) {
-//   console.error("Ошибка загрузки данных:", error);
-// }

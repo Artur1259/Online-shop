@@ -59,7 +59,7 @@ export function CartShopPage() {
       loader.classList.add("opacity-0", "transition-opacity", "duration-300");
       setTimeout(() => {
         document.body.removeChild(loader);
-        window.location.href = "/src/shop/store.html";
+        window.location.href = "/store.html";
       }, 300);
     }, 1000);
   };
