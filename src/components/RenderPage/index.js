@@ -1,29 +1,37 @@
 import { updateCartCount } from "../../helpers/index.js";
 import { rootContainer } from "../../script.js";
 
-   function handleBuyButtonClick(productId) {
-  const storedData = sessionStorage.getItem("cart");
-  const cart = storedData ? JSON.parse(storedData) : [];
+
+function handleBuyButtonClick(productId) {
+  const storedData = localStorage.getItem("cart");
+  const cart = storedData ? JSON.parse(storedData) : {};
+  const user = JSON.parse(sessionStorage.getItem("user")); 
+
+  const cartKey = user ? `user_${user.id}` : "guest";
+
+  if (!cart[cartKey]) {
+    cart[cartKey] = [];
+  }
 
   let productFound = false;
-  for (const item of cart) {
+  for (const item of cart[cartKey]) {
     if (item[productId] !== undefined) {
-      item[productId] += 1;
+      item[productId] += 1; 
       productFound = true;
       break;
     }
   }
 
   if (!productFound) {
-    const newProduct = {};
-    newProduct[productId] = 1;
-    cart.push(newProduct);
+    cart[cartKey].push({ [productId]: 1 });
   }
 
-  sessionStorage.setItem("cart", JSON.stringify(cart));
-
-  animateCartIcon();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  
+  animateCartIcon()
+  updateCartCount()
 }
+
  function animateCartIcon() {
   const cartIcon = document.querySelector(".fa-shopping-cart");
   if (!cartIcon) return;
@@ -76,7 +84,6 @@ export function renderProducts(products) {
 
     button.onclick = () => {
       handleBuyButtonClick(product.id);
-      updateCartCount();
     };
 
     container.appendChild(card);

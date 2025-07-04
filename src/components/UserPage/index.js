@@ -96,7 +96,7 @@ export function UserPage() {
         localStorage.setItem("cart", JSON.stringify(cart));
       }
 
-      window.history.replaceState({}, "", "index.html");
+      window.history.replaceState({}, "", "../../store.html");
       window.location.href = "store.html";
     }
   });

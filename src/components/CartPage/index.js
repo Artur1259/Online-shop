@@ -3,16 +3,19 @@ import { rootContainer } from "../../script.js";
 import { MenuPage } from "../MenuPage/index.js";
 
 export function CartPage() {
-  const cart = JSON.parse(sessionStorage.getItem("cart"));
+  
+  const cart = JSON.parse(localStorage.getItem("cart"));
   const products = JSON.parse(sessionStorage.getItem("products"));
+  const user = sessionStorage.getItem("user");
 
+  const cartKey = user ? `user_${JSON.parse(user).id}` : "guest";
 
   const cartItems = [];
-  cart &&
-    cart.forEach((cartItem) => {
+  cart[cartKey] &&
+    cart[cartKey]?.forEach((cartItem) => {
       const productId = Object.keys(cartItem)[0];
       const quantity = cartItem[productId];
-      const product = products.filter((item) => item.id == productId);
+      const product = products.find((item) => item.id == productId);
 
       if (product) {
         cartItems.push({
@@ -63,17 +66,17 @@ export function CartPage() {
       productWrapper.className = "flex ";
 
       const productImage = document.createElement("img");
-      productImage.src = item[0].thumbnail;
+      productImage.src = item.thumbnail;
       productImage.className = "w-16 h-16 object-cover mr-4 rounded";
 
       const productDetails = document.createElement("div");
       productDetails.className = "pb-4";
 
       const productName = document.createElement("h3");
-      productName.innerText = item[0].title;
+      productName.innerText = item.title;
 
       const productPrice = document.createElement("p");
-      productPrice.innerText = "Price:" + item[0].price * item.quantity + "$";
+      productPrice.innerText = "Price:" + item.price * item.quantity + "$";
 
       const productQuantity = document.createElement("p");
       productQuantity.innerText = "Quantity: " + item.quantity;
@@ -84,7 +87,7 @@ export function CartPage() {
         "px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700 ml-4 cursor-pointer";
 
       productDeleteButton.onclick = () => {
-        const updatedCart = cart.filter((cartItem)=>Object.keys(cartItem)[0] !== item[0].id.toString());
+        const updatedCart = cart.filter((cartItem)=>Object.keys(cartItem)[0] !== item.id.toString());
         sessionStorage.setItem("cart", JSON.stringify(updatedCart));
         container.innerHTML = "";
         CartPage();
